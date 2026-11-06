@@ -1,100 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SkyVenture Travel & Tours</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#071426;color:white}
-header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;background:#06101f}
-.logo{color:#d8b45c;font-size:23px;font-weight:bold}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;background:#06101f;flex-wrap:wrap}
+.logo{color:#e5c477;font-size:22px;font-weight:bold}
 nav a{color:white;text-decoration:none;margin:8px;font-size:14px}
-.hero{padding:85px 7%;text-align:center;background:linear-gradient(90deg,#06101fee,#102b48cc)}
-h1{font-size:42px;color:#e5c477}
-.hero p{font-size:18px}
-button{background:#d8b45c;color:#071426;border:0;padding:13px 22px;border-radius:6px;font-weight:bold;cursor:pointer}
-section{padding:45px 7%}
+.hero{text-align:center;padding:75px 6%;background:linear-gradient(120deg,#06101f,#173b5d)}
+h1{font-size:38px;color:#e5c477}
 h2{color:#e5c477}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:#10243b;padding:25px;border-radius:12px;border:1px solid #31445b}
-input,select{width:100%;padding:13px;margin:7px 0;border-radius:6px;border:0}
+.hero p{font-size:18px}
+section{padding:40px 6%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:#10243b;padding:24px;border-radius:12px;border:1px solid #344963}
+input,select,textarea{width:100%;padding:13px;margin:7px 0 14px;border:0;border-radius:6px;font-size:15px}
+label{display:block;color:#e5c477;margin-top:8px}
+button{background:#d8b45c;color:#071426;border:0;padding:14px 22px;border-radius:6px;font-weight:bold;cursor:pointer}
+button:hover{background:#f0d58c}
+#result{margin-top:15px;line-height:1.5}
 footer{text-align:center;padding:25px;background:#06101f;color:#bbb}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">✦ SKYVENTURE</div>
 <nav>
+<a href="#booking">Booking</a>
 <a href="#hotels">Hotels</a>
 <a href="#flights">Flights</a>
-<a href="#tours">Island Tours</a>
+<a href="#tours">Tours</a>
 <a href="#packages">Packages</a>
 </nav>
 </header>
 
 <div class="hero">
 <h1>Discover the World with SkyVenture</h1>
-<p>Your journey. Your destination. Our service.</p>
-<button onclick="document.getElementById('booking').scrollIntoView()">Book Your Trip</button>
+<p>Your Journey. Your Destination. Our Service.</p>
+<button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">BOOK YOUR TRIP</button>
 </div>
 
 <section id="booking">
-<h2>Start Your Booking</h2>
+<h2>✈️ Travel Booking Request</h2>
 <div class="card">
-<form action="mailto:mvnaval83@gmail.com" method="post" enctype="text/plain">
-<input name="Name" placeholder="Full Name" required>
-<input name="Email" type="email" placeholder="Email Address" required>
-<select name="Travel Service">
-<option>Hotel Booking</option>
-<option>Flight Booking</option>
-<option>Island Tour</option>
-<option>Travel Package</option>
+<form id="bookingForm">
+
+<label>Full Name</label>
+<input name="customer_name" required placeholder="Your full name">
+
+<label>Email Address</label>
+<input name="email" type="email" required placeholder="Your email">
+
+<label>Contact Number</label>
+<input name="phone" placeholder="Your mobile number">
+
+<label>Travel Service</label>
+<select name="service_type" required>
+<option value="hotel">Hotel Booking</option>
+<option value="flight">Flight Booking</option>
+<option value="island_tour">Island Tour</option>
+<option value="package">Travel Package</option>
 </select>
-<input name="Destination" placeholder="Destination" required>
-<input name="Travel Date" type="date" required>
-<input name="Guests" type="number" min="1" placeholder="Number of Guests" required>
-<button type="submit">Send Booking Request</button>
+
+<label>Travel Type</label>
+<select name="travel_type">
+<option value="domestic">Domestic</option>
+<option value="international">International</option>
+</select>
+
+<label>Departure / Origin</label>
+<input name="origin" placeholder="Where are you coming from?">
+
+<label>Destination</label>
+<input name="destination" required placeholder="Where do you want to go?">
+
+<label>Travel Start Date</label>
+<input name="start_date" type="date">
+
+<label>Travel End Date</label>
+<input name="end_date" type="date">
+
+<label>Adults</label>
+<input name="adults" type="number" min="1" value="1">
+
+<label>Children</label>
+<input name="children" type="number" min="0" value="0">
+
+<label>Rooms (for hotels)</label>
+<input name="rooms" type="number" min="1" value="1">
+
+<label>Preferred Supplier</label>
+<select name="supplier_preference">
+<option value="">No preference</option>
+<option>Expedia TAAP</option>
+<option>Traveloka</option>
+<option>Love to Travel</option>
+<option>CMT</option>
+</select>
+
+<label>Special Requests</label>
+<textarea name="special_requests" rows="3" placeholder="Additional details"></textarea>
+
+<button type="submit" id="submitBtn">SUBMIT BOOKING REQUEST</button>
+<div id="result" role="status"></div>
 </form>
 </div>
 </section>
 
 <section id="hotels">
-<h2>Hotel Reservations</h2>
+<h2>🏨 Hotels</h2>
 <div class="grid">
-<div class="card">🏨 Domestic Hotels</div>
-<div class="card">🌎 International Hotels</div>
+<div class="card">Domestic Hotel Reservations</div>
+<div class="card">International Hotel Reservations</div>
 </div>
 </section>
 
 <section id="flights">
-<h2>Flight Booking</h2>
+<h2>✈️ Flights</h2>
 <div class="grid">
-<div class="card">✈️ Domestic Flights</div>
-<div class="card">🌍 International Flights</div>
+<div class="card">Domestic Flight Requests</div>
+<div class="card">International Flight Requests</div>
 </div>
 </section>
 
 <section id="tours">
-<h2>Island Tours</h2>
+<h2>🏝️ Island Tours</h2>
 <div class="grid">
-<div class="card">🏝️ Boracay</div>
-<div class="card">🌊 Palawan</div>
-<div class="card">🌴 Cebu</div>
+<div class="card">Boracay Island</div>
+<div class="card">Palawan</div>
+<div class="card">Cebu</div>
+<div class="card">Bohol</div>
 </div>
 </section>
 
 <section id="packages">
-<h2>Travel Packages</h2>
+<h2>🌎 Travel Packages</h2>
 <div class="grid">
-<div class="card">Domestic Packages</div>
-<div class="card">International Packages</div>
+<div class="card">Domestic Travel Packages</div>
+<div class="card">International Travel Packages</div>
 </div>
 </section>
 
 <footer>
 <p>© 2026 SkyVenture Travel & Tours</p>
-<p>Contact us through Facebook Messenger</p>
+<p>Travel with confidence. Explore with SkyVenture.</p>
+<p>Contact us through Facebook Messenger.</p>
 </footer>
+
+<script>
+const SUPABASE_URL = "https://ueulepjbivwjukqslbxc.supabase.co";
+const SUPABASE_KEY = "sb_publishable_3zPyDad1AAHGaZlE-vdKXA_dxurgK6L";
+
+const form = document.getElementById("bookingForm");
+const result = document.getElementById("result");
+const submitBtn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "SENDING...";
+  result.textContent = "";
+
+  const data = new FormData(form);
+  const booking = {
+    customer_name: data.get("customer_name"),
+    email: data.get("email"),
+    phone: data.get("phone") || null,
+    service_type: data.get("service_type"),
+    travel_type: data.get("travel_type"),
+    origin: data.get("origin") || null,
+    destination: data.get("destination"),
+    start_date: data.get("start_date") || null,
+    end_date: data.get("end_date") || null,
+    adults: Number(data.get("adults")),
+    children: Number(data.get("children")),
+    rooms: Number(data.get("rooms")),
+    supplier_preference: data.get("supplier_preference") || null,
+    special_requests: data.get("special_requests") || null,
+    status: "pending",
+    payment_status: "unpaid"
+  };
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL + "/rest/v1/booking_requests",
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(booking)
+      }
+    );
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(error);
+    }
+
+    result.textContent = "Thank you! Your booking request has been received. Our team will contact you.";
+    form.reset();
+
+  } catch (error) {
+    console.error(error);
+    result.textContent = "Unable to submit your request. Please try again later.";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "SUBMIT BOOKING REQUEST";
+  }
+});
+</script>
+
 </body>
 </html>
