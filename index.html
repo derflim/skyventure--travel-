@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkyVenture Travel & Tours</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#071426;color:white}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;background:#06101f}
+.logo{color:#d8b45c;font-size:23px;font-weight:bold}
+nav a{color:white;text-decoration:none;margin:8px;font-size:14px}
+.hero{padding:85px 7%;text-align:center;background:linear-gradient(90deg,#06101fee,#102b48cc)}
+h1{font-size:42px;color:#e5c477}
+.hero p{font-size:18px}
+button{background:#d8b45c;color:#071426;border:0;padding:13px 22px;border-radius:6px;font-weight:bold;cursor:pointer}
+section{padding:45px 7%}
+h2{color:#e5c477}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#10243b;padding:25px;border-radius:12px;border:1px solid #31445b}
+input,select{width:100%;padding:13px;margin:7px 0;border-radius:6px;border:0}
+footer{text-align:center;padding:25px;background:#06101f;color:#bbb}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">✦ SKYVENTURE</div>
+<nav>
+<a href="#hotels">Hotels</a>
+<a href="#flights">Flights</a>
+<a href="#tours">Island Tours</a>
+<a href="#packages">Packages</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Discover the World with SkyVenture</h1>
+<p>Your journey. Your destination. Our service.</p>
+<button onclick="document.getElementById('booking').scrollIntoView()">Book Your Trip</button>
+</div>
+
+<section id="booking">
+<h2>Start Your Booking</h2>
+<div class="card">
+<form action="mailto:mvnaval83@gmail.com" method="post" enctype="text/plain">
+<input name="Name" placeholder="Full Name" required>
+<input name="Email" type="email" placeholder="Email Address" required>
+<select name="Travel Service">
+<option>Hotel Booking</option>
+<option>Flight Booking</option>
+<option>Island Tour</option>
+<option>Travel Package</option>
+</select>
+<input name="Destination" placeholder="Destination" required>
+<input name="Travel Date" type="date" required>
+<input name="Guests" type="number" min="1" placeholder="Number of Guests" required>
+<button type="submit">Send Booking Request</button>
+</form>
+</div>
+</section>
+
+<section id="hotels">
+<h2>Hotel Reservations</h2>
+<div class="grid">
+<div class="card">🏨 Domestic Hotels</div>
+<div class="card">🌎 International Hotels</div>
+</div>
+</section>
+
+<section id="flights">
+<h2>Flight Booking</h2>
+<div class="grid">
+<div class="card">✈️ Domestic Flights</div>
+<div class="card">🌍 International Flights</div>
+</div>
+</section>
+
+<section id="tours">
+<h2>Island Tours</h2>
+<div class="grid">
+<div class="card">🏝️ Boracay</div>
+<div class="card">🌊 Palawan</div>
+<div class="card">🌴 Cebu</div>
+</div>
+</section>
+
+<section id="packages">
+<h2>Travel Packages</h2>
+<div class="grid">
+<div class="card">Domestic Packages</div>
+<div class="card">International Packages</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 SkyVenture Travel & Tours</p>
+<p>Contact us through Facebook Messenger</p>
+</footer>
+</body>
+</html>
